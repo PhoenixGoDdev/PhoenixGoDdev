@@ -60,7 +60,7 @@
         <a href="https://discord.gg/hWM3RcE6cp" target="_blank"><img
                 src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg"
                 alt="Discord" height="30" width="40"></a>
-        <a href="" target="_blank"><img
+        <a href="https://startflares.com/" target="_blank"><img
                 src="https://github.com/devicons/devicon/blob/master/icons/google/google-original.svg" alt="Gmail"
                 height="30" width="40"></a>
     </p>
