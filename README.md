@@ -58,10 +58,10 @@
 
   <p align="center">
         <a href="https://discord.gg/hWM3RcE6cp" target="_blank"><img
-                src="[https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg]"
+                src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg"
                 alt="Discord" height="30" width="40"></a>
         <a href="https://startflares.com/" target="_blank"><img
-                src="https://github.com/devicons/devicon/blob/master/icons/google/google-original.svg" alt="Gmail"
+                src="https://media.discordapp.net/attachments/1231263406921875607/1231614340759683242/sf_logo_sexy.png" alt="Gmail"
                 height="30" width="40"></a>
     </p>
 
