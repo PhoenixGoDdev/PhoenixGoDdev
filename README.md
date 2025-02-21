@@ -57,7 +57,7 @@
   <h3 align="center">Connect with Me</h3>
 
   <p align="center">
-        <a href="https://discord.gg/hWM3RcE6cp" target="_blank"><img
+        <a href="https://discord.gg/EvnYVr4S7Y" target="_blank"><img
                 src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg"
                 alt="Discord" height="30" width="40"></a>
         <a href="https://startflares.com/" target="_blank"><img
@@ -69,6 +69,6 @@
 
   <h3 align="center">Stats</h3>
 
-[![Discord Presence](https://lanyard.cnrad.dev/api/693759608472338464)](https://discord.com/users/693759608472338464)
+[![Discord Presence](https://lanyard.cnrad.dev/api/854787326156603442)](https://discord.com/users/854787326156603442)
 
 </div>
