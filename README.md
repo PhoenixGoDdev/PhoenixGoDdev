@@ -65,9 +65,6 @@
                 height="30" width="40"></a>
     </p>
 
-  ---
-
-  <h3 align="center">Stats</h3>
 
 
 
