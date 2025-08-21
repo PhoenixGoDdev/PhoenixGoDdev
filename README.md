@@ -69,6 +69,6 @@
 
   <h3 align="center">Stats</h3>
 
-[![Discord Presence](https://lanyard.cnrad.dev/api/854787326156603442)](https://discord.com/users/854787326156603442)
+
 
 </div>
