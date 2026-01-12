@@ -1,71 +1,105 @@
 <div align="center">
+  <a href="https://git.io/typing-svg">
+    <img
+      src="https://readme-typing-svg.demolab.com?font=Quantico&weight=400&size=28&pause=1000&duration=2000&width=800&center=true&vCenter=true&lines=Hey+Guys+I+Am+Phoenix+GoD;Full+Stack+Developer+%40+PhoenixDev;Web+Developer+%7C+Back+End+Dev;Founder+Of+Starflares;Founder+Of+PX+Scripts"
+      alt="Typing SVG"
+    />
+  </a>
+</div>
 
-  <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzY5eDBja2I4c2o3cHFrZmJmd3IzdHJhZWpla2VycXl1d3Nsa2lpeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LaVp0AyqR5bGsC5Cbm/giphy.gif" width="400px" height="300px" />
+## AboutMe.py
+<div align="left">
 
-  <br>
-  <br>
+```python
+class PhoenixGodProfile:
+    def __init__(self):
+        self.name = ["Phoenix GoD"]
+        self.ask_me_about = {
+            "hobbies": [
+                "Coding",
+                "Gaming", 
+                "Full Stack Developer"
+                ""
+            ]
+        }
+        self.technologies = {
+            "databases": ["MySql", "Supabase", "Mongodb"]
+        }
+        self.current_projects = "PX-Scripts Developments Project.."
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Saira&weight=600&pause=1000&random=false&width=435&lines=Wassup%2CGuys+i'm+Phoenix+GoD" alt="Typing SVG" /></a>
-  <h3 align="center">Skills</h3>
+phoenix_god = PhoenixGodProfile()
 
-<p align="center">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/lua/lua-original.svg" alt="LUA"
-            height="40">
-        <img src="https://github.com/devicons/devicon/raw/master/icons/html5/html5-original.svg" alt="HTML5"
-            height="40">
-        <img src="https://github.com/devicons/devicon/raw/master/icons/css3/css3-original.svg" alt="CSS3" height="40">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg"
-            alt="JavaScript" height="40">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg" alt="Node.js"
-            height="40">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/nextjs/nextjs-original-wordmark.svg"
-            alt="NextJs" height="40">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg" alt="ReactJs"
-            height="40">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/yarn/yarn-original-wordmark.svg" alt="Yarn"
-            height="40">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/npm/npm-original-wordmark.svg" alt="NPM"
-            height="40">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/typescript/typescript-original.svg"
-            alt="TypeScript" height="40">
-    </p>
+if __name__ == "__main__":
+    print(f"Name: {phoenix_god.name}")
+    print(f"Hobbies: {phoenix_god.ask_me_about['hobbies']}")
+    print(f"Databases: {phoenix_god.technologies['databases']}")
+    print(f"Current Projects: {phoenix_god.current_projects}")
+```
+</div>
+
+  ---
+
+<h3 align="center">Skills</h3>
+<div align="center">
+
+[![Languages](https://skillicons.dev/icons?i=html,php,css,js,ts,react,bootstrap,svg,lua,mysql,nodejs,python,java,bots,git,jquery,cs,cpp,blender,azure,angular,discordjs,vscode&theme=dark)](https://github.com/PhoenixGoDdev)
+
+</div>
 
   ---
 
 <h3 align="center">Learning</h3>
+<div align="center">
 
-<p align="center">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/svelte/svelte-original.svg" alt="Svelte"
-            height="40">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/java/java-original-wordmark.svg" alt="Java"
-            height="40">
-    </p>
-
-  ---
-
-  <h3 align="center">Databases</h3>
-
-  <p align="center">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original-wordmark.svg" alt="MySQL"
-            height="40">
-        <img src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain-wordmark.svg"
-            alt="FireBase" height="40">
-    </p>
-
-  ---
-
-  <h3 align="center">Connect with Me</h3>
-
-  <p align="center">
-        <a href="https://discord.gg/EvnYVr4S7Y" target="_blank"><img
-                src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg"
-                alt="Discord" height="30" width="40"></a>
-        <a href="https://px-scripts.vercel.app/" target="_blank"><img
-                src="https://github.com/devicons/devicon/blob/master/icons/google/google-original.svg" alt="Gmail"
-                height="30" width="40"></a>
-    </p>
-
-
-
+[![Learning](https://skillicons.dev/icons?i=svelte,vue,swift&theme=dark)](https://github.com/PhoenixGoDdev)
 
 </div>
+
+  ---
+
+<h3 align="center">Databases</h3>
+<div align="center">
+
+[![database](https://skillicons.dev/icons?i=mysql,firebase,mongodb&theme=dark)](https://github.com/PhoenixGoDdev)
+
+</div>
+
+  ---
+
+<h3 align="center">Connect with Me</h3>
+<div align="center">
+
+[![connect](https://skillicons.dev/icons?i=discord,gmail&theme=dark)](https://github.com/PhoenixGoDdev)
+
+</div>
+
+  ---
+
+<h3 align="center">Best Hosting Provider</h3>
+<div align="center">
+
+<a href="https://gbnodes.host" target="_blank">
+  <img 
+    src="https://raw.githubusercontent.com/PhoenixGoDdev/PhoenixGoDdev/main/assets/gbnodes.png"
+    alt="GB Nodes Hosting"
+    width="650"
+    style="max-width:100%; height:auto;"
+  />
+</a>
+
+<p>
+  <b>High-Performance FiveM • Game • Web Hosting • Bot Hosting • Minecraft</b><br/>
+  <sub>🌐 Network ASN: <b>AS213574</b></sub>
+</p>
+
+</div>
+
+  ---
+
+<h3 align="center">Stats</h3>
+<div align="center">
+
+[![Discord Presence](https://lanyard.cnrad.dev/api/854787326156603442)](https://discord.com/users/854787326156603442)
+
+</div>
+ 
