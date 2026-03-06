@@ -23,7 +23,7 @@ class PhoenixGodProfile:
             ]
         }
         self.technologies = {
-            "databases": ["MySql", "Supabase", "Mongodb"]
+            "databases": ["MySql", "Supabase", "Mongodb", "Firebase"]
         }
         self.current_projects = "PX-Scripts Developments Project.."
 
