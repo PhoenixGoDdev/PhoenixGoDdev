@@ -18,7 +18,7 @@ class PhoenixGodProfile:
             "hobbies": [
                 "Coding",
                 "Gaming", 
-                "Full Stack Developer"
+                "Full Stack Developer",
                 "FiveM Developer"
             ]
         }
