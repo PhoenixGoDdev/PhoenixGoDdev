@@ -19,7 +19,7 @@ class PhoenixGodProfile:
                 "Coding",
                 "Gaming", 
                 "Full Stack Developer"
-                ""
+                "FiveM Developer"
             ]
         }
         self.technologies = {
