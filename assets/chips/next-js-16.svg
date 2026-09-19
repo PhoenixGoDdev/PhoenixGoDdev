@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="127" height="32" viewBox="0 0 127 32" role="img" aria-label="Next.js 16">
+<rect x=".5" y=".5" width="126" height="31" rx="9" fill="#12161d" stroke="#2d333b"/>
+<g transform="translate(11.5 8.5) scale(0.6267)" color="#ff8a3d"><path fill="currentColor" d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.615V9.251l9.85 12.727Zm-3.332-8.533 1.6 2.061V7.2h-1.6v6.245Z"/></g>
+<text x="35.5" y="20.4" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="600" fill="#e6edf3" textLength="77.5" lengthAdjust="spacing">Next.js 16</text>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 120" width="1280" height="120" role="img" aria-label="Still rollin'">
+<defs>
+<linearGradient id="l" x1="0" x2="1"><stop offset="0" stop-color="#e03e0b" stop-opacity="0"/><stop offset=".3" stop-color="#e03e0b"/><stop offset=".7" stop-color="#f08c00"/><stop offset="1" stop-color="#f08c00" stop-opacity="0"/></linearGradient>
+<mask id="gap"><rect width="1280" height="120" fill="#fff"/><rect x="505" y="30" width="270" height="60" fill="#000"/></mask>
+</defs>
+<style>
+.w { fill: none; stroke: url(#l); stroke-width: 2; stroke-linecap: round; }
+.s { fill: none; stroke: #f08c00; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 60 1400; animation: run 7s linear infinite; }
+@keyframes run { from { stroke-dashoffset: 60; } to { stroke-dashoffset: -1400; } }
+@media (prefers-reduced-motion: reduce) { .s { animation: none; opacity: 0; } }
+</style>
+<g mask="url(#gap)"><path class="w" d="M0 60 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0"/><path class="s" d="M0 60 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0 q20 -16 40 0 t40 0 q20 16 40 0 t40 0"/></g>
+<text x="640" y="66" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="17" letter-spacing="5" fill="#59636e">STILL ROLLIN'</text>
+</svg>

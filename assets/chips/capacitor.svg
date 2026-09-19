@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="119" height="32" viewBox="0 0 119 32" role="img" aria-label="Capacitor">
+<rect x=".5" y=".5" width="118" height="31" rx="9" fill="#12161d" stroke="#2d333b"/>
+<g transform="translate(11.5 8.5) scale(0.6267)" color="#ff8a3d"><path fill="currentColor" d="M24 3.7l-5.766 5.766 5.725 5.736-3.713 3.712L5.073 3.742 8.786.03l5.736 5.726L20.284 0 24 3.7zM.029 8.785l3.713-3.713 15.173 15.173-3.713 3.714-5.732-5.726L3.7 24 0 20.285l5.754-5.764L.029 8.785z"/></g>
+<text x="35.5" y="20.4" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="600" fill="#e6edf3" textLength="69.8" lengthAdjust="spacing">Capacitor</text>
+</svg>
