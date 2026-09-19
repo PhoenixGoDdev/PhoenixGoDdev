@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="204" height="40" viewBox="0 0 204 40" role="img" aria-label="phoenixdev.online">
+<defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff5a1f"/><stop offset="1" stop-color="#ffb52e"/></linearGradient></defs>
+<rect x=".5" y=".5" width="203" height="39" rx="11.2" fill="url(#g)" stroke="#ffb52e"/>
+<g transform="translate(14.4 10.6) scale(0.7833)" color="#160a02"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c3 3.2 3 15.8 0 19M12 2.5c-3 3.2-3 15.8 0 19"/></g></g>
+<text x="44.4" y="24.7" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="13.5" font-weight="600" fill="#160a02" textLength="142.3" lengthAdjust="spacing">phoenixdev.online</text>
+</svg>

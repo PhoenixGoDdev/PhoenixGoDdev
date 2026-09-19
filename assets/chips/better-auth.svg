@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="135" height="32" viewBox="0 0 135 32" role="img" aria-label="Better Auth">
+<rect x=".5" y=".5" width="134" height="31" rx="9" fill="#12161d" stroke="#2d333b"/>
+<g transform="translate(11.5 8.5) scale(0.6267)" color="#ff8a3d"><path fill="currentColor" d="M0 3.39v17.22h5.783V15.06h6.434V8.939H5.783V3.39ZM12.217 8.94h5.638v6.122h-5.638v5.548H24V3.391H12.217Z"/></g>
+<text x="35.5" y="20.4" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="600" fill="#e6edf3" textLength="85.3" lengthAdjust="spacing">Better Auth</text>
+</svg>

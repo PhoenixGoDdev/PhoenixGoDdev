@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="32" viewBox="0 0 96 32" role="img" aria-label="Vitest">
+<rect x=".5" y=".5" width="95" height="31" rx="9" fill="#12161d" stroke="#2d333b"/>
+<g transform="translate(11.5 8.5) scale(0.6267)" color="#ff8a3d"><path fill="currentColor" d="M11.545 23.3a.613.613 0 0 1-.895.197L.252 15.936A.61.61 0 0 1 0 15.439V6.325c0-.502.569-.792.975-.497l6.358 4.624c.594.433 1.432.25 1.793-.39L14.393.7a.62.62 0 0 1 .535-.314h8.455a.613.613 0 0 1 .537.916z"/></g>
+<text x="35.5" y="20.4" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" font-weight="600" fill="#e6edf3" textLength="46.5" lengthAdjust="spacing">Vitest</text>
+</svg>
