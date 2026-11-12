@@ -1,256 +1,272 @@
-// Generates every SVG in /assets. Run: node scripts/build.mjs
-// Edit the STACK list below to add/remove chips, then paste the printed markup into README.md.
+// Builds everything in /assets (header, footer, tech chips, GB Nodes card) in dark + light,
+// then rewrites the stack block in README.md between the <!-- stack --> markers.
+// Text is converted to outlines (Geist, same typeface as phoenixdev.online) so it
+// renders identically for every visitor instead of falling back to a system font.
+//
+//   npm install
+//   npm run build
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import opentype from 'opentype.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const icons = JSON.parse(fs.readFileSync(path.join(root, 'scripts/icons.json'), 'utf8'))
-const out = (rel, svg) => {
-  const file = path.join(root, 'assets', rel)
-  fs.mkdirSync(path.dirname(file), { recursive: true })
-  fs.writeFileSync(file, svg.replace(/\n\s+/g, '\n').trim() + '\n')
+const font = (file) => opentype.loadSync(path.join(root, 'scripts/fonts', file))
+
+const FONTS = {
+  bold: font('Geist-Bold.ttf'),
+  semibold: font('Geist-SemiBold.ttf'),
+  medium: font('Geist-Medium.ttf'),
+  mono: font('GeistMono-Regular.ttf'),
 }
 
-const MONO = "ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace"
-const SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif"
-
-const THEMES = {
-  dark: {
-    bg: '#0a0d12', border: '#21262d', text: '#f0f6fc', muted: '#9198a1', faint: '#30363d',
-    ember1: '#ff4d14', ember2: '#ffb52e', glow: 0.34, grid: '#ffffff', gridOpacity: 0.07,
-  },
-  light: {
-    bg: '#ffffff', border: '#d1d9e0', text: '#1f2328', muted: '#59636e', faint: '#d1d9e0',
-    ember1: '#e03e0b', ember2: '#f08c00', glow: 0.18, grid: '#1f2328', gridOpacity: 0.08,
-  },
+// ---- edit these -----------------------------------------------------------
+const COPY = {
+  initials: 'AR',
+  name: 'Arka Roy',
+  site: 'phoenixdev.online',
+  // Words wrapped in [brackets] are drawn hollow (outline only).
+  headline: ['I take products', 'from an [empty] folder', 'to production.'],
+  ticker: ['Web platforms', 'APIs and realtime', 'Mobile apps', 'Desktop tools', 'AI and automation', 'Game servers', 'Programmatic video'],
+  tickerSeconds: 46,
 }
 
-// deterministic pseudo-random so rebuilds don't churn the diff
-let seed = 7
-const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646
-const f = (n) => Number(n.toFixed(1))
-
-/* ------------------------------------------------------------------ hero */
-
-function phoenix(cx, cy) {
-  const paths = []
-  const pt = (deg, len) => [cx + Math.cos((deg * Math.PI) / 180) * len, cy - Math.sin((deg * Math.PI) / 180) * len]
-  // wings: a fan of feathers that dip out of the body and sweep up to the tips, mirrored
-  const N = 13
-  for (const side of [1, -1]) {
-    for (let i = 0; i < N; i++) {
-      const t = i / (N - 1)
-      const deg = 2 + t * 76
-      const len = 120 + 172 * Math.sin(Math.PI * (0.12 + 0.74 * t))
-      const end = side === 1 ? deg : 180 - deg
-      const ctl = side === 1 ? deg - 30 : 180 - deg + 30
-      const [ex, ey] = pt(end, len)
-      const [mx, my] = pt(ctl, len * 0.58)
-      paths.push({ d: `M${f(cx)} ${f(cy)} Q${f(mx)} ${f(my)} ${f(ex)} ${f(ey)}`, w: 2.5 - t * 1.2, o: 1 - t * 0.3, i })
-    }
-  }
-  // tail: long streamers trailing down past the frame
-  for (let i = 0; i < 7; i++) {
-    const t = i / 6 - 0.5
-    paths.push({
-      d: `M${f(cx)} ${f(cy)} C${f(cx + t * 30)} ${f(cy + 80)} ${f(cx + t * 300)} ${f(cy + 110)} ${f(cx + t * 210)} ${f(cy + 240 - Math.abs(t) * 60)}`,
-      w: 2 - Math.abs(t) * 1.3, o: 0.85 - Math.abs(t) * 0.6, i: i + 3,
-    })
-  }
-  // neck, head, beak and crest
-  const hx = cx + 10, hy = cy - 78
-  paths.push({ d: `M${f(cx)} ${f(cy)} C${f(cx - 14)} ${f(cy - 30)} ${f(cx + 16)} ${f(cy - 48)} ${f(hx)} ${f(hy)}`, w: 3, o: 1, i: 0 })
-  paths.push({ d: `M${f(hx)} ${f(hy)} q10 -4 22 4`, w: 2.4, o: 1, i: 1 })
-  for (let i = 0; i < 3; i++) {
-    paths.push({ d: `M${f(hx)} ${f(hy)} q${f(-10 - i * 6)} ${f(-22 + i * 5)} ${f(-36 - i * 8)} ${f(-26 + i * 14)}`, w: 1.4, o: 0.75, i: i + 2 })
-  }
-  return paths
-}
-
-function hero(name) {
-  const c = THEMES[name]
-  seed = 7
-  const W = 1280, H = 420
-  const bird = phoenix(1046, 240)
-  const embers = Array.from({ length: 22 }, () => ({
-    x: 780 + rnd() * 480, y: 300 + rnd() * 130, r: 1 + rnd() * 2.2, dur: 5 + rnd() * 6, delay: -rnd() * 11, drift: -30 + rnd() * 60, rise: 220 + rnd() * 160,
-  }))
-  const lines = [
-    'next.js · react · typescript · tailwind',
-    'bun · hono · postgres · drizzle · payload',
-    'flutter · react native · electron · .net',
-    'lua · fivem · nui · tebex',
-    'claude agent sdk · gemini · fastapi',
-    'remotion · gsap · three.js',
-  ]
-  const CH = 12.05 // forced glyph advance for the mono line (px)
-  const STEP = 3.2
-  const TOTAL = lines.length * STEP
-  const pct = (s) => f((s / TOTAL) * 100)
-
-  return `
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Phoenix GoD — full-stack developer building for web, mobile, desktop and game servers">
-    <defs>
-      <linearGradient id="ember" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="${c.ember1}"/><stop offset="1" stop-color="${c.ember2}"/></linearGradient>
-      <radialGradient id="feather" gradientUnits="userSpaceOnUse" cx="1046" cy="240" r="305"><stop offset="0" stop-color="${c.ember2}"/><stop offset=".45" stop-color="${c.ember1}"/><stop offset="1" stop-color="${c.ember1}" stop-opacity="0"/></radialGradient>
-      <radialGradient id="glow" gradientUnits="userSpaceOnUse" cx="1046" cy="262" r="430"><stop offset="0" stop-color="${c.ember1}" stop-opacity="${c.glow}"/><stop offset=".55" stop-color="${c.ember1}" stop-opacity="${f(c.glow * 0.25)}"/><stop offset="1" stop-color="${c.ember1}" stop-opacity="0"/></radialGradient>
-      <radialGradient id="core" gradientUnits="userSpaceOnUse" cx="1046" cy="240" r="60"><stop offset="0" stop-color="${c.ember2}" stop-opacity=".9"/><stop offset="1" stop-color="${c.ember2}" stop-opacity="0"/></radialGradient>
-      <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="${c.grid}" fill-opacity="${c.gridOpacity}"/></pattern>
-      <linearGradient id="fade" x1="0" x2="1"><stop offset=".35" stop-color="#fff" stop-opacity="0"/><stop offset=".8" stop-color="#fff"/></linearGradient>
-      <mask id="dotmask"><rect width="${W}" height="${H}" fill="url(#fade)"/></mask>
-      <clipPath id="frame"><rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="26"/></clipPath>
-    </defs>
-    <style>
-      .feather { fill: none; stroke: url(#feather); stroke-linecap: round; }
-      .spark { fill: none; stroke: ${c.ember2}; stroke-linecap: round; stroke-width: 2.2; stroke-dasharray: 26 1000; animation: spark 4.2s linear infinite; }
-      .bird { transform-origin: 1046px 240px; animation: breathe 6s ease-in-out infinite; }
-      .ember { fill: ${c.ember2}; animation: rise linear infinite; opacity: 0; }
-      .core { animation: pulse 3s ease-in-out infinite; transform-origin: 1046px 240px; }
-      .dot { animation: pulse 2.4s ease-in-out infinite; transform-origin: 80px 85px; }
-      .line { opacity: 0; animation: cycle ${TOTAL}s linear infinite; }
-      .caret { animation: blink 1s steps(1) infinite; }
-      @keyframes spark { from { stroke-dashoffset: 26; } to { stroke-dashoffset: -420; } }
-      @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.025) translateY(-3px); } }
-      @keyframes rise { 0% { transform: translate(0, 0); opacity: 0; } 12% { opacity: .95; } 70% { opacity: .5; } 100% { transform: translate(var(--dx), var(--dy)); opacity: 0; } }
-      @keyframes pulse { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.18); } }
-      @keyframes cycle { 0% { opacity: 0; transform: translateY(8px); } ${pct(0.35)}% { opacity: 1; transform: translateY(0); } ${pct(STEP - 0.35)}% { opacity: 1; transform: translateY(0); } ${pct(STEP)}% { opacity: 0; transform: translateY(-8px); } 100% { opacity: 0; } }
-      @keyframes blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
-      @media (prefers-reduced-motion: reduce) { .spark, .bird, .ember, .core, .dot, .line, .caret { animation: none; } .line { opacity: 0; } .line.first { opacity: 1; } .ember { opacity: .6; } }
-    </style>
-
-    <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="26" fill="${c.bg}" stroke="${c.border}" stroke-width="2"/>
-    <g clip-path="url(#frame)">
-      <rect width="${W}" height="${H}" fill="url(#dots)" mask="url(#dotmask)"/>
-      <rect width="${W}" height="${H}" fill="url(#glow)"/>
-      <g class="bird">
-        ${bird.map((p) => `<path class="feather" d="${p.d}" stroke-width="${f(p.w)}" opacity="${f(p.o)}"/>`).join('\n')}
-        ${bird.filter((_, i) => i % 2 === 0).map((p) => `<path class="spark" d="${p.d}" style="animation-delay:${f(-p.i * 0.37)}s"/>`).join('\n')}
-        <circle class="core" cx="1046" cy="240" r="60" fill="url(#core)"/>
-        <circle cx="1046" cy="240" r="5" fill="${c.ember2}"/>
-      </g>
-      ${embers.map((e) => `<circle class="ember" cx="${f(e.x)}" cy="${f(e.y)}" r="${f(e.r)}" style="--dx:${f(e.drift)}px;--dy:${f(-e.rise)}px;animation-duration:${f(e.dur)}s;animation-delay:${f(e.delay)}s"/>`).join('\n')}
-    </g>
-
-    <circle class="dot" cx="80" cy="85" r="5" fill="url(#ember)"/>
-    <text x="98" y="90" font-family="${MONO}" font-size="15" letter-spacing="2.6" fill="${c.muted}">ARKA ROY  /  @PHOENIXGODDEV</text>
-
-    <text x="70" y="196" font-family="${SANS}" font-size="104" font-weight="800" letter-spacing="-4.5" fill="${c.text}">Phoenix <tspan fill="url(#ember)">GoD</tspan></text>
-    <text x="76" y="252" font-family="${SANS}" font-size="25" fill="${c.muted}">Full-stack developer — web, mobile, desktop &amp; game servers.</text>
-
-    <rect x="76" y="292" width="${f(lines.reduce((m, l) => Math.max(m, l.length), 0) * CH + 74)}" height="52" rx="12" fill="${c.text}" fill-opacity=".04" stroke="${c.faint}"/>
-    <text x="96" y="325" font-family="${MONO}" font-size="20" font-weight="700" fill="url(#ember)">~$</text>
-    ${lines.map((l, i) => `
-      <g class="line${i === 0 ? ' first' : ''}" style="animation-delay:${f(i * STEP)}s">
-        <text x="132" y="325" font-family="${MONO}" font-size="20" fill="${c.text}" textLength="${f(l.length * CH)}" lengthAdjust="spacing">${l}</text>
-        <rect class="caret" x="${f(132 + l.length * CH + 8)}" y="307" width="11" height="23" rx="2" fill="url(#ember)"/>
-      </g>`).join('')}
-
-    <text x="78" y="384" font-family="${MONO}" font-size="14" letter-spacing="1.6" fill="${c.muted}">IST · UTC+05:30<tspan dx="26" fill="url(#ember)">/</tspan><tspan dx="26">FOUNDER @PX-SCRIPTS</tspan><tspan dx="26" fill="url(#ember)">/</tspan><tspan dx="26">STILL ROLLIN'</tspan></text>
-  </svg>`
-}
-
-/* ----------------------------------------------------------------- chips */
-
-const CUSTOM = {
-  globe: `<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c3 3.2 3 15.8 0 19M12 2.5c-3 3.2-3 15.8 0 19"/></g>`,
-  bag: `<g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 8h15l-1.2 12.5h-12.6z"/><path d="M8.5 8V6.5a3.5 3.5 0 0 1 7 0V8"/></g>`,
-  play: `<g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="M10 9v6l5-3z" fill="currentColor"/></g>`,
-}
-
-function chip(label, icon, { h = 32, size = 12.5, primary = false } = {}) {
-  const adv = size * 0.62
-  const tw = f(label.length * adv)
-  const ix = h * 0.36, is = h * 0.47
-  const tx = ix + is + h * 0.28
-  const W = Math.ceil(tx + tw + h * 0.42)
-  const ink = primary ? '#160a02' : '#e6edf3'
-  const tint = primary ? '#160a02' : '#ff8a3d'
-  const glyph = CUSTOM[icon] ?? `<path fill="currentColor" d="${icons[icon]}"/>`
-  if (!CUSTOM[icon] && !icons[icon]) throw new Error(`missing icon: ${icon}`)
-  return `
-  <svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${h}" viewBox="0 0 ${W} ${h}" role="img" aria-label="${label.replace(/&/g, '&amp;')}">
-    ${primary ? `<defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff5a1f"/><stop offset="1" stop-color="#ffb52e"/></linearGradient></defs>` : ''}
-    <rect x=".5" y=".5" width="${W - 1}" height="${h - 1}" rx="${f(h * 0.28)}" fill="${primary ? 'url(#g)' : '#12161d'}" stroke="${primary ? '#ffb52e' : '#2d333b'}"/>
-    <g transform="translate(${f(ix)} ${f((h - is) / 2)}) scale(${(is / 24).toFixed(4)})" color="${tint}">${glyph}</g>
-    <text x="${f(tx)}" y="${f(h / 2 + size * 0.35)}" font-family="${MONO}" font-size="${size}" font-weight="600" fill="${ink}" textLength="${tw}" lengthAdjust="spacing">${label.replace(/&/g, '&amp;')}</text>
-  </svg>`
-}
-
+// [label, icon] per group. Icons are simple-icons slugs from scripts/icons.json,
+// or one of the hand-drawn glyphs in CUSTOM further down.
 const STACK = [
   ['Languages', [['TypeScript', 'typescript'], ['JavaScript', 'javascript'], ['Python', 'python'], ['Dart', 'dart'], ['Lua', 'lua'], ['C#', 'dotnet']]],
-  ['Frontend', [['React 19', 'react'], ['Next.js 16', 'nextdotjs'], ['Tailwind CSS 4', 'tailwindcss'], ['Vite', 'vite'], ['shadcn/ui', 'shadcnui'], ['GSAP', 'greensock'], ['Motion', 'framer'], ['Three.js', 'threedotjs']]],
+  ['Frontend', [['React', 'react'], ['Next.js', 'nextdotjs'], ['Tailwind CSS', 'tailwindcss'], ['Vite', 'vite'], ['shadcn/ui', 'shadcnui'], ['GSAP', 'greensock'], ['Motion', 'framer'], ['Three.js', 'threedotjs']]],
   ['Backend', [['Node.js', 'nodedotjs'], ['Bun', 'bun'], ['Hono', 'hono'], ['Express', 'express'], ['FastAPI', 'fastapi'], ['Socket.IO', 'socketdotio'], ['GraphQL', 'graphql'], ['Zod', 'zod'], ['Better Auth', 'betterauth']]],
-  ['Data & CMS', [['PostgreSQL', 'postgresql'], ['Drizzle', 'drizzle'], ['Prisma', 'prisma'], ['Payload CMS', 'payloadcms'], ['MongoDB', 'mongodb'], ['MySQL', 'mysql'], ['Redis', 'redis'], ['PocketBase', 'pocketbase']]],
-  ['Mobile & Desktop', [['Flutter', 'flutter'], ['React Native', 'react'], ['Expo', 'expo'], ['Capacitor', 'capacitor'], ['Electron', 'electron'], ['.NET 8', 'dotnet']]],
-  ['Game & Creative', [['FiveM', 'fivem'], ['Tebex', 'bag'], ['Discord.js', 'discorddotjs'], ['Remotion', 'play'], ['Rive', 'rive'], ['Blender', 'blender']]],
-  ['AI & Automation', [['Claude Agent SDK', 'claude'], ['Gemini API', 'googlegemini'], ['Puppeteer', 'puppeteer'], ['Playwright', 'playwright']]],
-  ['Ship & Test', [['Docker', 'docker'], ['Vercel', 'vercel'], ['Git', 'git'], ['pnpm', 'pnpm'], ['Vitest', 'vitest']]],
+  ['Data', [['PostgreSQL', 'postgresql'], ['Drizzle', 'drizzle'], ['Prisma', 'prisma'], ['Payload CMS', 'payloadcms'], ['MongoDB', 'mongodb'], ['MySQL', 'mysql'], ['Redis', 'redis'], ['Supabase', 'supabase'], ['Firebase', 'firebase'], ['PocketBase', 'pocketbase']]],
+  ['Mobile and desktop', [['Flutter', 'flutter'], ['React Native', 'react'], ['Expo', 'expo'], ['Capacitor', 'capacitor'], ['Electron', 'electron'], ['.NET', 'dotnet']]],
+  ['Game and creative', [['FiveM', 'fivem'], ['Tebex', 'tebex'], ['Discord.js', 'discorddotjs'], ['Godot', 'godotengine'], ['Unity', 'unity'], ['Blender', 'blender'], ['Remotion', 'remotion'], ['Rive', 'rive']]],
+  ['AI and automation', [['Claude', 'claude'], ['Gemini', 'googlegemini'], ['Playwright', 'playwright'], ['Puppeteer', 'puppeteer']]],
+  ['Shipping', [['Linux', 'linux'], ['Docker', 'docker'], ['Caddy', 'caddy'], ['PM2', 'pm2'], ['Vercel', 'vercel'], ['Railway', 'railway'], ['GitHub', 'github'], ['Git', 'git'], ['pnpm', 'pnpm'], ['Vitest', 'vitest']]],
 ]
-const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'x'
 
-/* ------------------------------------------------------- headers + footer */
-
-function heading(name, num, word, sub) {
-  const c = THEMES[name]
-  const A = 9.4, B = 8.1
-  const x1 = 34, x2 = x1 + word.length * (A + 3) + 16
-  const W = Math.ceil(x2 + sub.length * B + 4)
-  return `
-  <svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="28" viewBox="0 0 ${W} 28" role="img" aria-label="${word}: ${sub}">
-    <defs><linearGradient id="e" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="${c.ember1}"/><stop offset="1" stop-color="${c.ember2}"/></linearGradient></defs>
-    <text x="0" y="20" font-family="${MONO}" font-size="15" font-weight="700" fill="url(#e)" textLength="22" lengthAdjust="spacingAndGlyphs">${num}</text>
-    <text x="${x1}" y="20" font-family="${MONO}" font-size="15.5" font-weight="700" fill="${c.text}" textLength="${f(word.length * (A + 3) - 3)}" lengthAdjust="spacing">${word}</text>
-    <text x="${f(x2)}" y="20" font-family="${MONO}" font-size="13.5" fill="${c.muted}" textLength="${f(sub.length * B)}" lengthAdjust="spacing">${sub}</text>
-  </svg>`
+const PARTNER = {
+  image: 'assets/gbnodes.png',
+  line: 'FiveM, game, web, bot and Minecraft hosting',
+  note: 'NETWORK ASN  AS213574',
 }
 
-function footer(name) {
-  const c = THEMES[name]
-  const W = 1280, H = 120
-  let d = `M0 60`
-  for (let x = 0; x < W; x += 80) d += ` q20 ${x % 160 === 0 ? -16 : 16} 40 0 t40 0`
-  return `
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Still rollin'">
-    <defs>
-      <linearGradient id="l" x1="0" x2="1"><stop offset="0" stop-color="${c.ember1}" stop-opacity="0"/><stop offset=".3" stop-color="${c.ember1}"/><stop offset=".7" stop-color="${c.ember2}"/><stop offset="1" stop-color="${c.ember2}" stop-opacity="0"/></linearGradient>
-      <mask id="gap"><rect width="${W}" height="${H}" fill="#fff"/><rect x="505" y="30" width="270" height="60" fill="#000"/></mask>
-    </defs>
-    <style>
-      .w { fill: none; stroke: url(#l); stroke-width: 2; stroke-linecap: round; }
-      .s { fill: none; stroke: ${c.ember2}; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 60 1400; animation: run 7s linear infinite; }
-      @keyframes run { from { stroke-dashoffset: 60; } to { stroke-dashoffset: -1400; } }
-      @media (prefers-reduced-motion: reduce) { .s { animation: none; opacity: 0; } }
-    </style>
-    <g mask="url(#gap)"><path class="w" d="${d}"/><path class="s" d="${d}"/></g>
-    <text x="640" y="66" text-anchor="middle" font-family="${MONO}" font-size="17" letter-spacing="5" fill="${c.muted}">STILL ROLLIN'</text>
-  </svg>`
+const THEMES = {
+  dark: { bg: '#0a0a0a', border: '#262626', text: '#fafafa', soft: '#8f8f8f', line: '#232323', chip: '#0a0a0a', chipBorder: '#2e2e2e', chipText: '#ededed' },
+  light: { bg: '#fafafa', border: '#e4e4e4', text: '#0a0a0a', soft: '#757575', line: '#e7e7e7', chip: '#ffffff', chipBorder: '#dcdcdc', chipText: '#171717' },
+}
+// ---------------------------------------------------------------------------
+
+const W = 1280
+const PAD = 72
+const n = (v) => Number(v.toFixed(1))
+
+const width = (str, f, size, tracking = 0) => f.getAdvanceWidth(str, size, { kerning: true, letterSpacing: tracking })
+const outline = (str, f, size, x, y, tracking = 0) => f.getPath(str, x, y, size, { kerning: true, letterSpacing: tracking }).toPathData(1)
+
+function text(str, { font, size, x, y, fill, tracking = 0, align = 'left' }) {
+  const w = width(str, font, size, tracking)
+  const left = align === 'right' ? x - w : align === 'center' ? x - w / 2 : x
+  return `<path fill="${fill}" d="${outline(str, font, size, left, y, tracking)}"/>`
 }
 
-/* ------------------------------------------------------------------ emit */
+/* ----------------------------------------------------------------- header */
 
-for (const t of ['dark', 'light']) {
-  out(`hero-${t}.svg`, hero(t))
-  out(`footer-${t}.svg`, footer(t))
-  for (const [num, word, sub] of [['01', 'SPARK', 'who I am'], ['02', 'FORGE', 'what I build'], ['03', 'FUEL', 'the stack I ship with'], ['04', 'BURNING NOW', 'current focus'], ['05', 'EMBERS', 'activity'], ['06', 'POWERED BY', 'where my stuff runs']]) {
-    out(`h/${num}-${t}.svg`, heading(t, num, word, sub))
+// One headline line; [bracketed] words become stroke-only.
+function line(str, { size, x, y, color, tracking }) {
+  let out = ''
+  let cx = x
+  for (const part of str.split(/(\[[^\]]+\])/).filter(Boolean)) {
+    const hollow = part.startsWith('[')
+    const word = hollow ? part.slice(1, -1) : part
+    const d = outline(word, FONTS.bold, size, cx, y, tracking)
+    out += hollow
+      ? `<path fill="none" stroke="${color}" stroke-width="2.4" stroke-linejoin="round" d="${d}"/>`
+      : `<path fill="${color}" d="${d}"/>`
+    cx += width(word, FONTS.bold, size, tracking)
+  }
+  return out
+}
+
+function header(theme) {
+  const c = THEMES[theme]
+  const H = 580
+  const BAND = 62 // ticker strip along the bottom edge
+  const TRACK = -0.05
+  const plain = COPY.headline.map((l) => l.replace(/[[\]]/g, ''))
+  // size the headline so its widest line spans the card
+  const size = Math.min(124, ...plain.map((l) => (124 * (W - PAD * 2)) / width(l, FONTS.bold, 124, TRACK)))
+  const lead = size * 0.98
+  const first = 134 + size * 0.86
+
+  // ticker: one cycle of the phrase list, repeated and slid left by one cycle
+  const TS = 17
+  const TT = 0.16
+  let tx = 0
+  let cycle = ''
+  for (const item of COPY.ticker) {
+    const label = item.toUpperCase()
+    cycle += outline(label, FONTS.mono, TS, tx, 0, TT)
+    tx += width(label, FONTS.mono, TS, TT) + 30
+    cycle += `M${n(tx)} -6.2a3 3 0 1 0 6 0a3 3 0 1 0 -6 0z` // separator dot
+    tx += 6 + 30
+  }
+  const span = n(tx)
+  const copies = Math.ceil(W / span) + 2
+
+  const label = `${COPY.name}. ${plain.join(' ')}`
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${label}">
+<defs>
+<clipPath id="card"><rect x="2" y="2" width="${W - 4}" height="${H - 4}" rx="23"/></clipPath>
+<linearGradient id="edge" x1="0" x2="1"><stop offset="0" stop-color="#000"/><stop offset=".09" stop-color="#fff"/><stop offset=".91" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+<mask id="fade"><rect y="${H - BAND}" width="${W}" height="${BAND}" fill="url(#edge)"/></mask>
+<path id="t" d="${cycle}"/>
+</defs>
+<style>
+.run{animation:run ${COPY.tickerSeconds}s linear infinite}
+@keyframes run{to{transform:translateX(-${span}px)}}
+@media (prefers-reduced-motion:reduce){.run{animation:none}}
+</style>
+<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="24" fill="${c.bg}" stroke="${c.border}" stroke-width="2"/>
+<circle cx="${PAD + 24}" cy="78" r="24" fill="${c.text}"/>
+${text(COPY.initials, { font: FONTS.bold, size: 17, x: PAD + 24, y: 84, fill: c.bg, tracking: -0.02, align: 'center' })}
+${text(COPY.name, { font: FONTS.semibold, size: 24, x: PAD + 64, y: 86.5, fill: c.text, tracking: -0.03 })}
+${text(COPY.site, { font: FONTS.mono, size: 18, x: W - PAD, y: 84.5, fill: c.soft, align: 'right' })}
+${COPY.headline.map((l, i) => line(l, { size, x: PAD - 5, y: n(first + i * lead), color: c.text, tracking: TRACK })).join('\n')}
+<g clip-path="url(#card)">
+<rect x="0" y="${H - BAND}" width="${W}" height="1.5" fill="${c.line}"/>
+<g mask="url(#fade)"><g class="run" fill="${c.soft}">
+${Array.from({ length: copies }, (_, i) => `<use href="#t" x="${n(PAD + (i - 1) * span)}" y="${H - BAND / 2 + 6}"/>`).join('')}
+</g></g>
+</g>
+</svg>
+`
+}
+
+/* ----------------------------------------------------------------- footer */
+
+// Closing mark: the name set huge and hollow, fading out toward the bottom edge.
+function footer(theme) {
+  const c = THEMES[theme]
+  const TRACK = -0.055
+  const size = (300 * (W - 40)) / width(COPY.name, FONTS.bold, 300, TRACK)
+  const H = Math.round(size * 0.78) // baseline sits just above the bottom edge, descenders are cut
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${COPY.name}">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#fff" stop-opacity=".6"/><stop offset="1" stop-color="#fff" stop-opacity=".06"/></linearGradient>
+<mask id="m"><rect width="${W}" height="${H}" fill="url(#g)"/></mask>
+</defs>
+<path mask="url(#m)" fill="none" stroke="${c.soft}" stroke-width="1.8" stroke-linejoin="round" d="${outline(COPY.name, FONTS.bold, size, 8, n(size * 0.74), TRACK)}"/>
+</svg>
+`
+}
+
+/* ------------------------------------------------------------------ chips */
+
+const icons = JSON.parse(fs.readFileSync(path.join(root, 'scripts/icons.json'), 'utf8'))
+const CUSTOM = {
+  tebex: { hex: null, svg: `<g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 8h15l-1.2 12.5h-12.6z"/><path d="M8.5 8V6.5a3.5 3.5 0 0 1 7 0V8"/></g>` },
+  remotion: { hex: '0B84F3', svg: `<g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="M10 9v6l5-3z" fill="currentColor"/></g>` },
+}
+const FALLBACK_HEX = { playwright: '2EAD33' }
+
+const rgb = (hex) => [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16))
+const lum = (hex) => {
+  const [r, g, b] = rgb(hex).map((v) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4))
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b
+}
+const mix = (hex, to, t) => rgb(hex).map((v, i) => Math.round(v + (rgb(to)[i] - v) * t).toString(16).padStart(2, '0')).join('')
+
+// Brand colour, nudged until it is readable on the chip background.
+function tint(hex, theme, c) {
+  if (!hex) return c.chipText
+  let h = hex.toLowerCase()
+  if (theme === 'dark') {
+    if (lum(h) < 0.02) return c.chipText
+    for (let i = 0; i < 12 && lum(h) < 0.17; i++) h = mix(h, 'ffffff', 0.14)
+    return '#' + h
+  }
+  if (lum(h) > 0.82) return c.chipText
+  for (let i = 0; i < 12 && lum(h) > 0.52; i++) h = mix(h, '000000', 0.1)
+  return '#' + h
+}
+
+const slug = (s) => s.toLowerCase().replace(/#/g, 'sharp').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
+function chip(label, icon, theme) {
+  const c = THEMES[theme]
+  const H = 30
+  const SIZE = 12.5
+  const IS = 14
+  const ix = 10
+  const tx = ix + IS + 7
+  const tw = width(label, FONTS.medium, SIZE, 0.005)
+  const CW = Math.ceil(tx + tw + 11)
+  const src = CUSTOM[icon] ?? icons[icon]
+  if (!src) throw new Error(`missing icon: ${icon}`)
+  const color = tint(src.hex ?? FALLBACK_HEX[icon], theme, c)
+  const glyph = src.svg ?? `<path fill="currentColor" d="${src.path}"/>`
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${CW}" height="${H}" viewBox="0 0 ${CW} ${H}" role="img" aria-label="${label.replace(/&/g, '&amp;')}">
+<rect x=".5" y=".5" width="${CW - 1}" height="${H - 1}" rx="8" fill="${c.chip}" stroke="${c.chipBorder}"/>
+<g transform="translate(${ix} ${(H - IS) / 2}) scale(${(IS / 24).toFixed(4)})" color="${color}">${glyph}</g>
+<path fill="${c.chipText}" d="${outline(label, FONTS.medium, SIZE, tx, 19.4, 0.005)}"/>
+</svg>
+`
+}
+
+/* ---------------------------------------------------------------- partner */
+
+// The GB Nodes wordmark is white, so it always sits on a dark card.
+function partner() {
+  const c = THEMES.dark
+  const PW = 820
+  const PH = 420
+  const png = fs.readFileSync(path.join(root, PARTNER.image)).toString('base64')
+  const iw = 600
+  const ih = n((iw * 1276) / 3750)
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PW} ${PH}" width="${PW}" height="${PH}" role="img" aria-label="GB Nodes. ${PARTNER.line}.">
+<rect x="1" y="1" width="${PW - 2}" height="${PH - 2}" rx="28" fill="${c.bg}" stroke="${c.border}" stroke-width="2"/>
+<image href="data:image/png;base64,${png}" x="${(PW - iw) / 2}" y="62" width="${iw}" height="${ih}"/>
+${text(PARTNER.line, { font: FONTS.medium, size: 25, x: PW / 2, y: 322, fill: c.text, tracking: -0.01, align: 'center' })}
+${text(PARTNER.note, { font: FONTS.mono, size: 17, x: PW / 2, y: 364, fill: c.soft, tracking: 0.12, align: 'center' })}
+</svg>
+`
+}
+
+/* ------------------------------------------------------------------- emit */
+
+const write = (rel, svg) => {
+  const file = path.join(root, 'assets', rel)
+  fs.mkdirSync(path.dirname(file), { recursive: true })
+  fs.writeFileSync(file, svg)
+  return fs.statSync(file).size
+}
+
+for (const theme of Object.keys(THEMES)) {
+  for (const [name, svg] of [['header', header(theme)], ['footer', footer(theme)]]) {
+    console.log(`assets/${name}-${theme}.svg`, (write(`${name}-${theme}.svg`, svg) / 1024).toFixed(1) + ' KB')
   }
 }
+console.log('assets/gbnodes-card.svg', (write('gbnodes-card.svg', partner()) / 1024).toFixed(1) + ' KB')
 
-out('btn/website.svg', chip('phoenixdev.online', 'globe', { h: 40, size: 13.5, primary: true }))
-out('btn/discord.svg', chip('Join the Discord', 'discord', { h: 40, size: 13.5 }))
-out('btn/store.svg', chip('PX Scripts store', 'bag', { h: 40, size: 13.5 }))
-
-let md = ''
+fs.rmSync(path.join(root, 'assets/chips'), { recursive: true, force: true })
+let rows = ''
+let count = 0
 for (const [group, items] of STACK) {
-  md += `<tr>\n<td valign="top"><b>${group.replace(/&/g, '&amp;')}</b></td>\n<td>\n`
+  rows += `<tr>\n<td width="150" valign="top"><b>${group}</b></td>\n<td>\n`
   for (const [label, icon] of items) {
-    const file = `chips/${slug(label)}.svg`
-    out(file, chip(label, icon))
-    md += `<img src="assets/${file}" height="32" alt="${label.replace(/&/g, '&amp;')}" />\n`
+    const file = `${slug(label)}.svg`
+    for (const theme of Object.keys(THEMES)) write(`chips/${theme}/${file}`, chip(label, icon, theme))
+    rows += `<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/${file}"><img src="assets/chips/light/${file}" height="30" alt="${label}"></picture>\n`
+    count++
   }
-  md += `</td>\n</tr>\n`
+  rows += `</td>\n</tr>\n`
 }
-console.log(`<table>
-${md}</table>`)
-console.log('built', fs.readdirSync(path.join(root, 'assets/chips')).length, 'chips')
+console.log(`assets/chips: ${count} chips x 2 themes`)
+
+const readme = path.join(root, 'README.md')
+const md = fs.readFileSync(readme, 'utf8')
+const START = '<!-- stack:start -->'
+const END = '<!-- stack:end -->'
+if (!md.includes(START) || !md.includes(END)) throw new Error('README.md is missing the stack markers')
+fs.writeFileSync(readme, md.slice(0, md.indexOf(START) + START.length) + `\n<table>\n${rows}</table>\n` + md.slice(md.indexOf(END)))
+console.log('README.md stack block updated')

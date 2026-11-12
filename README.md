@@ -1,155 +1,158 @@
-<div align="center">
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Phoenix GoD — full-stack developer building for web, mobile, desktop and game servers"></picture>
-
-<br>
-
-<a href="https://phoenixdev.online"><img src="assets/btn/website.svg" height="40" alt="phoenixdev.online"></a>&nbsp;<a href="https://discord.gg/EvnYVr4S7Y"><img src="assets/btn/discord.svg" height="40" alt="Join the Discord"></a>&nbsp;<a href="https://px-scripts.tebex.io"><img src="assets/btn/store.svg" height="40" alt="PX Scripts store"></a>
-</div>
-
-<br>
-
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/h/01-dark.svg"><img src="assets/h/01-light.svg" height="28" alt="Spark — who I am"></picture></h2>
-
-I&#39;m **Arka** — online I go by **Phoenix GoD**. I take products from an empty folder to production, and I don&#39;t stay in one lane: the same week can be a CMS-driven site, a Flutter app, a Windows utility in .NET and a Lua resource for a FiveM server.
-
-TypeScript is home base. Everything else gets picked for the job, not the hype. Founder of [@px-scripts](https://github.com/px-scripts).
-
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/h/02-dark.svg"><img src="assets/h/02-light.svg" height="28" alt="Forge — what I build"></picture></h2>
-
-| | What comes out of it | Built with |
-|:--|:--|:--|
-| **Web platforms** | Content-driven sites, storefronts and admin dashboards with a headless CMS behind them and motion-heavy frontends on top. | `Next.js` `React` `Payload` `Tailwind` `GSAP` |
-| **APIs &amp; realtime** | Typed backends with auth, schema-first databases, sockets and scheduled jobs. | `Bun` `Hono` `Drizzle` `PostgreSQL` `Socket.IO` |
-| **Mobile &amp; desktop** | Cross-platform apps for Android, Windows and Linux, plus native Windows tooling. | `Flutter` `Expo` `Electron` `.NET` |
-| **Game-server tooling** | FiveM resources, in-game HUDs and NUI interfaces, and the storefront that sells them. | `Lua` `React` `FiveM` `Tebex` |
-| **AI agents &amp; automation** | Voice assistants, desktop agents and pipelines that do the boring work unattended. | `Claude Agent SDK` `Gemini` `FastAPI` `Python` |
-| **Programmatic video** | Promos and explainers rendered from React components instead of a timeline. | `Remotion` `TypeScript` |
-
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/h/03-dark.svg"><img src="assets/h/03-light.svg" height="28" alt="Fuel — the stack I ship with"></picture></h2>
+<a href="https://phoenixdev.online"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg"><img src="assets/header-light.svg" width="100%" alt="Arka Roy. I take products from an empty folder to production."></picture></a>
 
 <table>
 <tr>
-<td valign="top"><b>Languages</b></td>
+<td rowspan="2" width="424" valign="top">
+<sub><samp>ABOUT</samp></sub><br>
+I'm <b>Arka Roy</b>, a full-stack developer. Online I go by <b>Phoenix</b>.
+<br><br>
+I build SaaS products, mobile apps, CMS-driven sites and business automations, and I like owning the work end to end, from the database schema to the launch video.
+</td>
+<td width="211" valign="top"><sub><samp>BASED IN</samp></sub><br><b>India</b><br><sub>IST, UTC+5:30</sub></td>
+<td width="211" valign="top"><sub><samp>OPEN TO</samp></sub><br><b>Freelance, full-time</b><br><sub>Remote</sub></td>
+</tr>
+<tr>
+<td valign="top"><sub><samp>FOUNDER OF</samp></sub><br><b><a href="https://store.pxscripts.in">PX Scripts</a></b><br><sub>and <a href="https://starflares.com">Starflares</a></sub></td>
+<td valign="top"><sub><samp>PARTNER AT</samp></sub><br><b><a href="https://mindfrix.com">MindFrix</a></b><br><sub>Senior developer</sub></td>
+</tr>
+</table>
+
+<br>
+
+<samp>WHAT I WORK WITH</samp>
+
+<!-- stack:start -->
+<table>
+<tr>
+<td width="150" valign="top"><b>Languages</b></td>
 <td>
-<img src="assets/chips/typescript.svg" height="32" alt="TypeScript" />
-<img src="assets/chips/javascript.svg" height="32" alt="JavaScript" />
-<img src="assets/chips/python.svg" height="32" alt="Python" />
-<img src="assets/chips/dart.svg" height="32" alt="Dart" />
-<img src="assets/chips/lua.svg" height="32" alt="Lua" />
-<img src="assets/chips/c.svg" height="32" alt="C#" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/typescript.svg"><img src="assets/chips/light/typescript.svg" height="30" alt="TypeScript"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/javascript.svg"><img src="assets/chips/light/javascript.svg" height="30" alt="JavaScript"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/python.svg"><img src="assets/chips/light/python.svg" height="30" alt="Python"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/dart.svg"><img src="assets/chips/light/dart.svg" height="30" alt="Dart"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/lua.svg"><img src="assets/chips/light/lua.svg" height="30" alt="Lua"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/csharp.svg"><img src="assets/chips/light/csharp.svg" height="30" alt="C#"></picture>
 </td>
 </tr>
 <tr>
-<td valign="top"><b>Frontend</b></td>
+<td width="150" valign="top"><b>Frontend</b></td>
 <td>
-<img src="assets/chips/react-19.svg" height="32" alt="React 19" />
-<img src="assets/chips/next-js-16.svg" height="32" alt="Next.js 16" />
-<img src="assets/chips/tailwind-css-4.svg" height="32" alt="Tailwind CSS 4" />
-<img src="assets/chips/vite.svg" height="32" alt="Vite" />
-<img src="assets/chips/shadcn-ui.svg" height="32" alt="shadcn/ui" />
-<img src="assets/chips/gsap.svg" height="32" alt="GSAP" />
-<img src="assets/chips/motion.svg" height="32" alt="Motion" />
-<img src="assets/chips/three-js.svg" height="32" alt="Three.js" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/react.svg"><img src="assets/chips/light/react.svg" height="30" alt="React"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/next-js.svg"><img src="assets/chips/light/next-js.svg" height="30" alt="Next.js"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/tailwind-css.svg"><img src="assets/chips/light/tailwind-css.svg" height="30" alt="Tailwind CSS"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/vite.svg"><img src="assets/chips/light/vite.svg" height="30" alt="Vite"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/shadcn-ui.svg"><img src="assets/chips/light/shadcn-ui.svg" height="30" alt="shadcn/ui"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/gsap.svg"><img src="assets/chips/light/gsap.svg" height="30" alt="GSAP"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/motion.svg"><img src="assets/chips/light/motion.svg" height="30" alt="Motion"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/three-js.svg"><img src="assets/chips/light/three-js.svg" height="30" alt="Three.js"></picture>
 </td>
 </tr>
 <tr>
-<td valign="top"><b>Backend</b></td>
+<td width="150" valign="top"><b>Backend</b></td>
 <td>
-<img src="assets/chips/node-js.svg" height="32" alt="Node.js" />
-<img src="assets/chips/bun.svg" height="32" alt="Bun" />
-<img src="assets/chips/hono.svg" height="32" alt="Hono" />
-<img src="assets/chips/express.svg" height="32" alt="Express" />
-<img src="assets/chips/fastapi.svg" height="32" alt="FastAPI" />
-<img src="assets/chips/socket-io.svg" height="32" alt="Socket.IO" />
-<img src="assets/chips/graphql.svg" height="32" alt="GraphQL" />
-<img src="assets/chips/zod.svg" height="32" alt="Zod" />
-<img src="assets/chips/better-auth.svg" height="32" alt="Better Auth" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/node-js.svg"><img src="assets/chips/light/node-js.svg" height="30" alt="Node.js"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/bun.svg"><img src="assets/chips/light/bun.svg" height="30" alt="Bun"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/hono.svg"><img src="assets/chips/light/hono.svg" height="30" alt="Hono"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/express.svg"><img src="assets/chips/light/express.svg" height="30" alt="Express"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/fastapi.svg"><img src="assets/chips/light/fastapi.svg" height="30" alt="FastAPI"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/socket-io.svg"><img src="assets/chips/light/socket-io.svg" height="30" alt="Socket.IO"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/graphql.svg"><img src="assets/chips/light/graphql.svg" height="30" alt="GraphQL"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/zod.svg"><img src="assets/chips/light/zod.svg" height="30" alt="Zod"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/better-auth.svg"><img src="assets/chips/light/better-auth.svg" height="30" alt="Better Auth"></picture>
 </td>
 </tr>
 <tr>
-<td valign="top"><b>Data &amp; CMS</b></td>
+<td width="150" valign="top"><b>Data</b></td>
 <td>
-<img src="assets/chips/postgresql.svg" height="32" alt="PostgreSQL" />
-<img src="assets/chips/drizzle.svg" height="32" alt="Drizzle" />
-<img src="assets/chips/prisma.svg" height="32" alt="Prisma" />
-<img src="assets/chips/payload-cms.svg" height="32" alt="Payload CMS" />
-<img src="assets/chips/mongodb.svg" height="32" alt="MongoDB" />
-<img src="assets/chips/mysql.svg" height="32" alt="MySQL" />
-<img src="assets/chips/redis.svg" height="32" alt="Redis" />
-<img src="assets/chips/pocketbase.svg" height="32" alt="PocketBase" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/postgresql.svg"><img src="assets/chips/light/postgresql.svg" height="30" alt="PostgreSQL"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/drizzle.svg"><img src="assets/chips/light/drizzle.svg" height="30" alt="Drizzle"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/prisma.svg"><img src="assets/chips/light/prisma.svg" height="30" alt="Prisma"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/payload-cms.svg"><img src="assets/chips/light/payload-cms.svg" height="30" alt="Payload CMS"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/mongodb.svg"><img src="assets/chips/light/mongodb.svg" height="30" alt="MongoDB"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/mysql.svg"><img src="assets/chips/light/mysql.svg" height="30" alt="MySQL"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/redis.svg"><img src="assets/chips/light/redis.svg" height="30" alt="Redis"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/supabase.svg"><img src="assets/chips/light/supabase.svg" height="30" alt="Supabase"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/firebase.svg"><img src="assets/chips/light/firebase.svg" height="30" alt="Firebase"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/pocketbase.svg"><img src="assets/chips/light/pocketbase.svg" height="30" alt="PocketBase"></picture>
 </td>
 </tr>
 <tr>
-<td valign="top"><b>Mobile &amp; Desktop</b></td>
+<td width="150" valign="top"><b>Mobile and desktop</b></td>
 <td>
-<img src="assets/chips/flutter.svg" height="32" alt="Flutter" />
-<img src="assets/chips/react-native.svg" height="32" alt="React Native" />
-<img src="assets/chips/expo.svg" height="32" alt="Expo" />
-<img src="assets/chips/capacitor.svg" height="32" alt="Capacitor" />
-<img src="assets/chips/electron.svg" height="32" alt="Electron" />
-<img src="assets/chips/net-8.svg" height="32" alt=".NET 8" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/flutter.svg"><img src="assets/chips/light/flutter.svg" height="30" alt="Flutter"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/react-native.svg"><img src="assets/chips/light/react-native.svg" height="30" alt="React Native"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/expo.svg"><img src="assets/chips/light/expo.svg" height="30" alt="Expo"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/capacitor.svg"><img src="assets/chips/light/capacitor.svg" height="30" alt="Capacitor"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/electron.svg"><img src="assets/chips/light/electron.svg" height="30" alt="Electron"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/net.svg"><img src="assets/chips/light/net.svg" height="30" alt=".NET"></picture>
 </td>
 </tr>
 <tr>
-<td valign="top"><b>Game &amp; Creative</b></td>
+<td width="150" valign="top"><b>Game and creative</b></td>
 <td>
-<img src="assets/chips/fivem.svg" height="32" alt="FiveM" />
-<img src="assets/chips/tebex.svg" height="32" alt="Tebex" />
-<img src="assets/chips/discord-js.svg" height="32" alt="Discord.js" />
-<img src="assets/chips/remotion.svg" height="32" alt="Remotion" />
-<img src="assets/chips/rive.svg" height="32" alt="Rive" />
-<img src="assets/chips/blender.svg" height="32" alt="Blender" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/fivem.svg"><img src="assets/chips/light/fivem.svg" height="30" alt="FiveM"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/tebex.svg"><img src="assets/chips/light/tebex.svg" height="30" alt="Tebex"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/discord-js.svg"><img src="assets/chips/light/discord-js.svg" height="30" alt="Discord.js"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/godot.svg"><img src="assets/chips/light/godot.svg" height="30" alt="Godot"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/unity.svg"><img src="assets/chips/light/unity.svg" height="30" alt="Unity"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/blender.svg"><img src="assets/chips/light/blender.svg" height="30" alt="Blender"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/remotion.svg"><img src="assets/chips/light/remotion.svg" height="30" alt="Remotion"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/rive.svg"><img src="assets/chips/light/rive.svg" height="30" alt="Rive"></picture>
 </td>
 </tr>
 <tr>
-<td valign="top"><b>AI &amp; Automation</b></td>
+<td width="150" valign="top"><b>AI and automation</b></td>
 <td>
-<img src="assets/chips/claude-agent-sdk.svg" height="32" alt="Claude Agent SDK" />
-<img src="assets/chips/gemini-api.svg" height="32" alt="Gemini API" />
-<img src="assets/chips/puppeteer.svg" height="32" alt="Puppeteer" />
-<img src="assets/chips/playwright.svg" height="32" alt="Playwright" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/claude.svg"><img src="assets/chips/light/claude.svg" height="30" alt="Claude"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/gemini.svg"><img src="assets/chips/light/gemini.svg" height="30" alt="Gemini"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/playwright.svg"><img src="assets/chips/light/playwright.svg" height="30" alt="Playwright"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/puppeteer.svg"><img src="assets/chips/light/puppeteer.svg" height="30" alt="Puppeteer"></picture>
 </td>
 </tr>
 <tr>
-<td valign="top"><b>Ship &amp; Test</b></td>
+<td width="150" valign="top"><b>Shipping</b></td>
 <td>
-<img src="assets/chips/docker.svg" height="32" alt="Docker" />
-<img src="assets/chips/vercel.svg" height="32" alt="Vercel" />
-<img src="assets/chips/git.svg" height="32" alt="Git" />
-<img src="assets/chips/pnpm.svg" height="32" alt="pnpm" />
-<img src="assets/chips/vitest.svg" height="32" alt="Vitest" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/linux.svg"><img src="assets/chips/light/linux.svg" height="30" alt="Linux"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/docker.svg"><img src="assets/chips/light/docker.svg" height="30" alt="Docker"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/caddy.svg"><img src="assets/chips/light/caddy.svg" height="30" alt="Caddy"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/pm2.svg"><img src="assets/chips/light/pm2.svg" height="30" alt="PM2"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/vercel.svg"><img src="assets/chips/light/vercel.svg" height="30" alt="Vercel"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/railway.svg"><img src="assets/chips/light/railway.svg" height="30" alt="Railway"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/github.svg"><img src="assets/chips/light/github.svg" height="30" alt="GitHub"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/git.svg"><img src="assets/chips/light/git.svg" height="30" alt="Git"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/pnpm.svg"><img src="assets/chips/light/pnpm.svg" height="30" alt="pnpm"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/chips/dark/vitest.svg"><img src="assets/chips/light/vitest.svg" height="30" alt="Vitest"></picture>
+</td>
+</tr>
+</table>
+<!-- stack:end -->
+
+<br>
+
+<table>
+<tr>
+<td width="423" valign="top">
+<sub><samp>ON DISCORD</samp></sub><br><br>
+<a href="https://discord.com/users/854787326156603442"><img src="https://lanyard.cnrad.dev/api/854787326156603442?theme=dark&bg=0a0a0a&borderRadius=14px&hideDiscrim=true" width="100%" alt="Live Discord status"></a>
+</td>
+<td width="423" valign="top">
+<sub><samp>HOSTING PARTNER</samp></sub><br><br>
+<a href="https://gbnodes.host"><img src="assets/gbnodes-card.svg" width="100%" alt="GB Nodes: FiveM, game, web, bot and Minecraft hosting. Network ASN AS213574."></a>
 </td>
 </tr>
 </table>
 
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/h/04-dark.svg"><img src="assets/h/04-light.svg" height="28" alt="Burning now — current focus"></picture></h2>
-
-- Shipping on **Next.js 16 + React 19** with the React Compiler switched on.
-- Defaulting to **Bun, Hono, Drizzle and Postgres** for new backends.
-- Spending more time in **Flutter and Dart** — one codebase for Android, Windows and Linux.
-- Wiring real tools into agents with the **Claude Agent SDK**.
-
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/h/05-dark.svg"><img src="assets/h/05-light.svg" height="28" alt="Embers — activity"></picture></h2>
-
-<div align="center">
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/PhoenixGoDdev/PhoenixGoDdev/output/embers-dark.svg"><img src="https://raw.githubusercontent.com/PhoenixGoDdev/PhoenixGoDdev/output/embers-light.svg" width="100%" alt="Contribution graph drawn as an ember trail"></picture>
-
-<br><br>
-
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://lanyard.cnrad.dev/api/854787326156603442?theme=dark&bg=0a0d12&borderRadius=14px&hideDiscrim=true&idleMessage=Probably%20shipping%20something"><img src="https://lanyard.cnrad.dev/api/854787326156603442?theme=light&bg=ffffff&borderRadius=14px&hideDiscrim=true&idleMessage=Probably%20shipping%20something" alt="Live Discord presence"></picture>
-</div>
-
-<h2><picture><source media="(prefers-color-scheme: dark)" srcset="assets/h/06-dark.svg"><img src="assets/h/06-light.svg" height="28" alt="Powered by — where my stuff runs"></picture></h2>
-
-<div align="center">
-<a href="https://gbnodes.host"><img src="assets/gbnodes.png" width="440" alt="GB Nodes Hosting"></a>
-
-<b>High-performance FiveM · Game · Web · Bot · Minecraft hosting</b><br>
-<sub>Network ASN <b>AS213574</b></sub>
-</div>
-
 <br>
 
-<div align="center">
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/footer-dark.svg"><img src="assets/footer-light.svg" width="100%" alt="Still rollin&#39;"></picture>
-</div>
+<samp>FIND ME</samp>
+
+<table>
+<tr>
+<td width="212" valign="top"><sub><samp>PORTFOLIO</samp></sub><br><b><a href="https://phoenixdev.online">phoenixdev.online</a></b></td>
+<td width="212" valign="top"><sub><samp>WRITING</samp></sub><br><b><a href="https://phoenixdev.online/blog">Blog</a></b></td>
+<td width="212" valign="top"><sub><samp>CHAT</samp></sub><br><b><a href="https://discord.gg/EvnYVr4S7Y">Discord</a></b></td>
+<td width="212" valign="top"><sub><samp>STORE</samp></sub><br><b><a href="https://store.pxscripts.in">PX Scripts</a></b></td>
+</tr>
+</table>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/footer-dark.svg"><img src="assets/footer-light.svg" width="100%" alt=""></picture>
